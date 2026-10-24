@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- ⚠️ Meta Pixel Code यहाँ Paste करो (अपने Pixel ID के साथ) -->
+<!-- End Meta Pixel Code -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>𝐓𝐀𝐌𝐈𝐋 𝐇𝐀𝐑𝐌𝐎𝐍𝐈𝐂 𝐓𝐑𝐀𝐃𝐄𝐑 𝐑𝐀𝐉 · Stock Market</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Plus Jakarta Sans',sans-serif;}
+html,body{min-height:100vh;overflow-x:hidden;}
+
+body{
+  background:#0a0a0f;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  padding:20px 14px;
+  color:#fff;
+  position:relative;
+}
+
+/* Soft gradient background */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(251,191,36,0.1) 0%, transparent 40%),
+    radial-gradient(circle at 80% 90%, rgba(16,185,129,0.08) 0%, transparent 40%);
+  z-index:0;
+  pointer-events:none;
+}
+
+/* ===== BENTO GRID WRAPPER ===== */
+.bento{
+  position:relative;
+  z-index:2;
+  width:100%;
+  max-width:420px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:10px;
+}
+
+/* ===== BASE BENTO BOX ===== */
+.box{
+  background:#12121a;
+  border:1px solid rgba(255,255,255,0.06);
+  border-radius:20px;
+  padding:18px;
+  position:relative;
+  overflow:hidden;
+  transition:all 0.3s ease;
+}
+
+.box:hover{
+  border-color:rgba(251,191,36,0.2);
+  transform:translateY(-2px);
+}
+
+/* Full width box */
+.box-full{ grid-column:1 / -1; }
+
+/* Gold box */
+.box-gold{
+  background:linear-gradient(135deg, #12121a 0%, #1a1410 100%);
+  border-color:rgba(251,191,36,0.2);
+}
+
+/* Green box */
+.box-green{
+  background:linear-gradient(135deg, #12121a 0%, #0f1a16 100%);
+  border-color:rgba(16,185,129,0.2);
+}
+
+/* ===== BOX 1: HEADER (Full Width) ===== */
+.box-header{
+  padding:24px 20px 20px;
+  text-align:center;
+  position:relative;
+}
+
+.box-header::before{
+  content:'';
+  position:absolute;
+  top:0; left:25%; right:25%;
+  height:1px;
+  background:linear-gradient(90deg, transparent, #fbbf24, transparent);
+}
+
+/* Serial */
+.serial{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-family:'JetBrains Mono',monospace;
+  font-size:9px;
+  color:#64748b;
+  letter-spacing:1.5px;
+  margin-bottom:16px;
+  font-weight:700;
+}
+
+.serial .live{
+  color:#10b981;
+  display:flex;
+  align-items:center;
+  gap:5px;
+}
+
+.serial .live::before{
+  content:'';
+  width:5px; height:5px;
+  background:#10b981;
+  border-radius:50%;
+  box-shadow:0 0 8px #10b981;
+  animation:blink 1.5s infinite;
+}
+
+@keyframes blink{
+  0%,100%{opacity:1;}
+  50%{opacity:0.3;}
+}
+
+/* Avatar */
+.avatar-wrap{
+  position:relative;
+  width:88px;
+  height:88px;
+  margin:0 auto 14px;
+}
+
+.avatar{
+  width:88px;
+  height:88px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid #fbbf24;
+  box-shadow:0 0 25px rgba(251,191,36,0.25);
+  display:block;
+}
+
+.avatar-check{
+  position:absolute;
+  bottom:0; right:0;
+  width:24px; height:24px;
+  background:#10b981;
+  border:3px solid #12121a;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-size:11px;
+  font-weight:900;
+  box-shadow:0 0 12px rgba(16,185,129,0.6);
+}
+
+/* Name */
+h1{
+  font-size:18px;
+  font-weight:800;
+  line-height:1.3;
+  letter-spacing:-0.2px;
+  margin-bottom:6px;
+  color:#ffffff;
+}
+
+.sub{
+  font-family:'JetBrains Mono',monospace;
+  font-size:9.5px;
+  color:#fbbf24;
+  letter-spacing:2.5px;
+  text-transform:uppercase;
+  font-weight:700;
+}
+
+/* ===== BOX 2: STATS (2 tiles) ===== */
+.box-stat{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  min-height:90px;
+  text-align:center;
+}
+
+.stat-num{
+  font-family:'JetBrains Mono',monospace;
+  font-size:22px;
+  font-weight:800;
+  color:#fbbf24;
+  line-height:1;
+  margin-bottom:6px;
+}
+
+.stat-num.white{ color:#ffffff; }
+.stat-num.green{ color:#10b981; }
+
+.stat-lbl{
+  font-size:9px;
+  color:#64748b;
+  font-weight:600;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+/* ===== BOX 3: FEATURES (Full Width) ===== */
+.box-features{
+  padding:18px;
+}
+
+.feat-title{
+  font-family:'JetBrains Mono',monospace;
+  font-size:9px;
+  color:#fbbf24;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  margin-bottom:12px;
+  font-weight:700;
+}
+
+.feat-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+}
+
+.feat{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:11px;
+  color:#cbd5e1;
+  font-weight:500;
+  padding:6px 0;
+}
+
+.feat::before{
+  content:'✓';
+  width:16px;
+  height:16px;
+  background:rgba(16,185,129,0.15);
+  border:1px solid rgba(16,185,129,0.4);
+  border-radius:4px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  color:#10b981;
+  font-size:9px;
+  font-weight:900;
+  flex-shrink:0;
+}
+
+/* ===== BOX 4: CTA (Full Width) ===== */
+.box-cta{
+  padding:20px 18px;
+  text-align:center;
+}
+
+.btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  width:100%;
+  padding:16px;
+  background:linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+  color:#000;
+  font-weight:800;
+  font-size:14px;
+  text-decoration:none;
+  border-radius:12px;
+  letter-spacing:0.3px;
+  position:relative;
+  overflow:hidden;
+  transition:all 0.3s ease;
+  box-shadow:0 8px 25px rgba(251,191,36,0.3);
+  border:none;
+  cursor:pointer;
+  margin-bottom:12px;
+}
+
+.btn::before{
+  content:'';
+  position:absolute;
+  top:0; left:-100%;
+  width:100%; height:100%;
+  background:linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transition:left 0.7s ease;
+}
+
+.btn:hover::before{left:100%;}
+
+.btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 14px 35px rgba(251,191,36,0.5);
+}
+
+.btn:active{transform:scale(0.98);}
+
+.btn svg{width:18px;height:18px;flex-shrink:0;fill:currentColor;}
+
+.btn.loading{pointer-events:none;opacity:0.85;color:transparent;}
+.btn.loading svg{display:none;}
+
+.btn.loading::after{
+  content:'';
+  position:absolute;
+  width:18px;height:18px;
+  border:2px solid rgba(0,0,0,0.2);
+  border-top-color:#000;
+  border-radius:50%;
+  animation:spin 0.8s linear infinite;
+  left:50%; top:50%;
+  margin:-9px 0 0 -9px;
+}
+
+@keyframes spin{100%{transform:rotate(360deg);}}
+
+.cta-note{
+  font-size:10px;
+  color:#64748b;
+  font-weight:500;
+}
+
+/* ===== BOX 5: TRUST (Full Width) ===== */
+.box-trust{
+  padding:16px 18px;
+}
+
+.trust-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:11.5px;
+  color:#cbd5e1;
+  padding:6px 0;
+}
+
+.trust-row + .trust-row{
+  border-top:1px solid rgba(255,255,255,0.05);
+  margin-top:6px;
+  padding-top:10px;
+}
+
+.trust-icon{
+  width:20px; height:20px;
+  background:rgba(251,191,36,0.1);
+  border:1px solid rgba(251,191,36,0.3);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:10px;
+  color:#fbbf24;
+  flex-shrink:0;
+}
+
+/* ===== BOX 6: TIMER (Full Width) ===== */
+.box-timer{
+  padding:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:10.5px;
+  font-weight:700;
+  color:#fbbf24;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  background:rgba(251,191,36,0.04);
+  border-color:rgba(251,191,36,0.15);
+}
+
+.pulse-dot{
+  width:6px; height:6px;
+  background:#fbbf24;
+  border-radius:50%;
+  box-shadow:0 0 10px #fbbf24;
+  animation:blink 1.2s infinite;
+}
+
+/* ===== BOX 7: FOOTER (Full Width) ===== */
+.box-footer{
+  padding:14px 18px;
+  text-align:center;
+  background:transparent;
+  border-style:dashed;
+}
+
+.risk{
+  font-size:9.5px;
+  color:#475569;
+  line-height:1.5;
+  margin-bottom:12px;
+}
+
+.agency{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:9px;
+  color:#fbbf24;
+  text-decoration:none;
+  padding:5px 12px;
+  border:1px solid rgba(251,191,36,0.2);
+  border-radius:20px;
+  letter-spacing:1px;
+  font-weight:700;
+  transition:0.3s;
+}
+
+.agency:hover{
+  background:rgba(251,191,36,0.08);
+  border-color:rgba(251,191,36,0.4);
+}
+
+/* Honeypot */
+.hp-field{
+  position:absolute !important;
+  left:-9999px !important;
+  opacity:0 !important;
+  pointer-events:none !important;
+}
+
+/* Toast */
+.toast{
+  position:fixed;
+  bottom:24px; left:50%;
+  transform:translateX(-50%) translateY(100px);
+  background:#12121a;
+  border:1px solid rgba(251,191,36,0.4);
+  color:#fff;
+  padding:12px 22px;
+  border-radius:10px;
+  font-size:12.5px;
+  font-weight:600;
+  z-index:9999;
+  transition:transform 0.4s ease;
+  box-shadow:0 15px 40px rgba(0,0,0,0.8);
+  max-width:90%;
+  text-align:center;
+}
+
+.toast.show{transform:translateX(-50%) translateY(0);}
+
+/* Mobile */
+@media (max-width:380px){
+  .bento{gap:8px;}
+  .box{padding:14px;border-radius:16px;}
+  .box-header{padding:20px 16px 16px;}
+  h1{font-size:16px;}
+  .stat-num{font-size:19px;}
+  .avatar-wrap, .avatar{width:78px;height:78px;}
+  .btn{font-size:13px;padding:14px;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- Bento Grid -->
+<div class="bento">
+
+  <!-- BOX 1: HEADER (Full) -->
+  <div class="box box-full box-header">
+    <div class="serial">
+      <span class="live">LIVE</span>
+      <span>THTR-2024</span>
+    </div>
+    <div class="avatar-wrap">
+      <img class="avatar"
+        src="https://i.ibb.co/S7PsZwYm/m-LHz-JWv-Yfb-MJr-R16fbd8j6-2j-Ovaca-Cunx-BFw-V6-SSo-BZSz-Xe-ZKvv-Z9-VYk-Fmu-Fu5-Ww8nk-F763is-Wj2rw-Vsc.jpg"
+        alt="TAMIL HARMONIC TRADER RAJ">
+      <span class="avatar-check">✓</span>
+    </div>
+    <h1>𝐓𝐀𝐌𝐈𝐋 𝐇𝐀𝐑𝐌𝐎𝐍𝐈𝐂 𝐓𝐑𝐀𝐃𝐄𝐑 𝐑𝐀𝐉</h1>
+    <div class="sub">NIFTY · BANKNIFTY</div>
+  </div>
+
+  <!-- BOX 2: STAT 1 -->
+  <div class="box box-stat">
+    <div class="stat-num">5K+</div>
+    <div class="stat-lbl">Traders</div>
+  </div>
+
+  <!-- BOX 3: STAT 2 -->
+  <div class="box box-stat box-gold">
+    <div class="stat-num white">100%</div>
+    <div class="stat-lbl">Free Access</div>
+  </div>
+
+  <!-- BOX 4: FEATURES (Full) -->
+  <div class="box box-full box-features">
+    <div class="feat-title">What You Get</div>
+    <div class="feat-grid">
+      <div class="feat">Intraday Trades</div>
+      <div class="feat">Exact Levels</div>
+      <div class="feat">Beginner Help</div>
+      <div class="feat">Live Updates</div>
+    </div>
+  </div>
+
+  <!-- BOX 5: CTA (Full) -->
+  <div class="box box-full box-cta box-green">
+    <input type="text" name="website_url" class="hp-field" id="hp_field" tabindex="-1" autocomplete="off">
+    
+    <button type="button" class="btn" id="joinBtn" onclick="secureJoin(event)">
+      <svg viewBox="0 0 24 24">
+        <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+      </svg>
+      <span>Join Free Telegram Channel</span>
+    </button>
+    <div class="cta-note">No fees · No hidden charges</div>
+  </div>
+
+  <!-- BOX 6: TRUST (Full) -->
+  <div class="box box-full box-trust">
+    <div class="trust-row">
+      <span class="trust-icon">✓</span>
+      <span>Trusted by 5,000+ active traders</span>
+    </div>
+    <div class="trust-row">
+      <span class="trust-icon">✓</span>
+      <span>Daily consistent market analysis</span>
+    </div>
+  </div>
+
+  <!-- BOX 7: TIMER (Full) -->
+  <div class="box box-full box-timer">
+    <span class="pulse-dot"></span>
+    Free Access Closing Soon
+  </div>
+
+  <!-- BOX 8: FOOTER (Full) -->
+  <div class="box box-full box-footer">
+    <div class="risk">⚠ Market investments are subject to risk. Educational content only.</div>
+    <a href="https://t.me/+CKzXLc93ze44MTdl" class="agency" target="_blank" rel="noopener">
+      ⚡ @amitgrowthagency
+    </a>
+  </div>
+
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+(function() {
+  'use strict';
+
+  const TELEGRAM_URL = 'https://t.me/+ltg7ECxna09hMDk1';
+  const MIN_TIME = 3000;
+  const COOLDOWN = 30000;
+  const STORAGE_KEY = 'thtr_bento_v6';
+  const RAPID = 900;
+
+  let pageLoad = Date.now();
+  let mouseMoved = false;
+  let lastClick = 0;
+
+  function isBot(){
+    const ua = (navigator.userAgent||'').toLowerCase();
+    const sigs = ['headless','puppeteer','phantomjs','selenium','crawl','spider','curl','wget','python-requests','go-http-client','bot','slurp'];
+    for (let s of sigs) if (ua.indexOf(s) !== -1) return true;
+    if (navigator.webdriver) return true;
+    return false;
+  }
+
+  document.addEventListener('mousemove', () => mouseMoved = true, {once:true});
+  document.addEventListener('touchstart', () => mouseMoved = true, {once:true});
+  document.addEventListener('scroll', () => mouseMoved = true, {once:true, passive:true});
+
+  function toast(msg){
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3500);
+  }
+
+  function pixel(){
+    if (typeof fbq === 'function') {
+      try { fbq('track', 'Subscribe', {}, {eventID:'sub_'+Date.now()}); } catch(e){}
+    }
+  }
+
+  window.secureJoin = function(e){
+    if (e) e.preventDefault();
+    const now = Date.now();
+    const t = now - pageLoad;
+
+    if (now - lastClick < RAPID) return false;
+
+    const hp = document.getElementById('hp_field');
+    if (hp && hp.value !== '') return false;
+
+    if (isBot()) { toast('⚠️ Access denied'); return false; }
+
+    if (t < MIN_TIME) {
+      toast('⏳ Please wait ' + Math.ceil((MIN_TIME-t)/1000) + 's');
+      return false;
+    }
+
+    if (!mouseMoved) {
+      toast('⚠️ Please interact first');
+      return false;
+    }
+
+    try {
+      const ls = parseInt(localStorage.getItem(STORAGE_KEY)||'0',10);
+      if (now - ls < COOLDOWN) {
+        toast('⏳ Please wait ' + Math.ceil((COOLDOWN-(now-ls))/1000) + 's');
+        return false;
+      }
+    } catch(e){}
+
+    lastClick = now;
+    try { localStorage.setItem(STORAGE_KEY, String(now)); } catch(e){}
+
+    const b = document.getElementById('joinBtn');
+    b.classList.add('loading');
+
+    pixel();
+
+    setTimeout(() => {
+      window.open(TELEGRAM_URL, '_blank', 'noopener,noreferrer');
+      setTimeout(() => {
+        b.classList.remove('loading');
+      }, 1500);
+    }, 400);
+
+    return false;
+  };
+
+})();
+</script>
+
+</body>
+</html>
